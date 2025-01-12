@@ -7,8 +7,10 @@ app.use(cors());
 app.use(express.json());
 app.use('/email', emailRoutes);
 
-
+app.get('/', (req, res) => {
+    res.status(200).json('Welcome to backend server');
+});
 app.listen(5000, () => {
-    console.log('Server is running on port 3000');
+    console.log('http://localhost:5000/');
 });
 

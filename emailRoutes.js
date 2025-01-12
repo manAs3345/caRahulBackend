@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const nodemailer = require('nodemailer');
 
-router.post('/testEmailRoute/:messageToEcho', (req, res) => {
+router.get('/testEmailRoute/:messageToEcho', (req, res) => {
     const messageToEcho = req.params.messageToEcho;
     res.send(messageToEcho);
 });
