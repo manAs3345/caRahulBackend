@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
     res.status(200).json('Welcome to backend server');
 });
 app.listen(5000, () => {
-    console.log('http://localhost:5000/');
+    console.log('server running');
 });
 
 module.exports = app;
