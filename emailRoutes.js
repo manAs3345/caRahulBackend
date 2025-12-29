@@ -40,14 +40,35 @@ router.post('/sendEmail', (req, res) => {
     try{
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            return res.status(500).send(error.toString());
+            return res.status(500).json({
+                success: false,
+                message: 'Error sending email',
+                error: error.message
+            });
         }
-        res.status(200).send({"result":`Email sent`});
+        res.status(200).json({
+        success: true,
+        message: "Email sent successfully"
+    });
     });
     }catch(err){
         res.status(500).send({"message":"Error sending email","error":err.message});
     }
     
+});
+
+router.get('/smtp-test', async (req, res) => {
+    try {
+        await transporter.verify();
+        res.json({ success: true, message: "SMTP connection OK" });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            success: false,
+            message: "SMTP connection failed",
+            error: err.message
+        });
+    }
 });
 
 module.exports = router;
