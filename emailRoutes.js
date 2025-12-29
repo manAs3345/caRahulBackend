@@ -20,8 +20,10 @@ const transporter = nodemailer.createTransport({
     auth: {
         user: process.env.EMAIL,  // your GoDaddy custom domain email (e.g. info@yourdomain.com)
         pass: process.env.EMAIL_PASSWORD  // your email password
-    }
-
+    },
+    tls: {
+        rejectUnauthorized: false,        // ✅ important for GoDaddy
+    },
 });
 
 router.post('/sendEmail', (req, res) => {
@@ -36,12 +38,12 @@ router.post('/sendEmail', (req, res) => {
 
 
     try{
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                return res.status(500).send(error.toString());
-            }
-            res.status(200).send({"result":`Email sent`});
-        });
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return res.status(500).send(error.toString());
+        }
+        res.status(200).send({"result":`Email sent`});
+    });
     }catch(err){
         res.status(500).send({"message":"Error sending email","error":err.message});
     }
