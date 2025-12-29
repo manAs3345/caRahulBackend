@@ -13,7 +13,10 @@ app.get('/', (req, res) => {
 });
 app.listen(5000, () => {
     console.log('server running: http://localhost:5000');
+    console.log(process.env.EMAIL);
+    console.log(process.env.EMAIL_PASSWORD);
 });
+
 
 module.exports = app;
 
