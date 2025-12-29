@@ -24,6 +24,7 @@ const transporter = nodemailer.createTransport({
     tls: {
         rejectUnauthorized: false,        // ✅ important for GoDaddy
     },
+    connectionTimeout:5000
 });
 
 router.post('/sendEmail', (req, res) => {
