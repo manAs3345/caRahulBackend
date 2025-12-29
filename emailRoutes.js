@@ -15,8 +15,8 @@ router.post('/testEmailRoute/:messageToEcho', (req, res) => {
 // });
 const transporter = nodemailer.createTransport({
    host: "smtpout.secureserver.net",   // GoDaddy SMTP server
-    port: 465,                          // SSL port (use 587 for TLS if needed)
-    secure: true,                       // true for 465, false for 587
+    port: 587,                          // SSL port (use 587 for TLS if needed)
+    secure: false,                       // true for 465, false for 587
     auth: {
         user: process.env.EMAIL,  // your GoDaddy custom domain email (e.g. info@yourdomain.com)
         pass: process.env.EMAIL_PASSWORD  // your email password
