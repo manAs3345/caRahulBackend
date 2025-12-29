@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const emailRoutes = require('./emailRoutes');
@@ -11,7 +12,7 @@ app.get('/', (req, res) => {
     res.status(200).json('Welcome to backend server');
 });
 app.listen(5000, () => {
-    console.log('server running');
+    console.log('server running: http://localhost:5000');
 });
 
 module.exports = app;
