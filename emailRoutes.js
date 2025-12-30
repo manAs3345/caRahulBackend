@@ -10,9 +10,9 @@ router.post('/sendEmail', async (req, res) => {
             to: 'support@casomani.com',
             subject: subject,
             html: `<p>
-            Name: ${name}
-            Message: ${message}
-            Email: ${fromMail}
+            Name: ${name} <br/>
+            Message: ${message}  <br/>
+            Email: ${fromMail}  <br/>
             </p>`
         });
 
